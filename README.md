@@ -43,10 +43,15 @@ edgedb --version # 5.3+cc878d8 si output "Command not found" -> redemarrer bash
 edgedb project init
 edgedb
 
-# output
-#EdgeDB 5.3+cc878d8 (repl 5.1.0+7c5764f)
-#Type \help for help, \quit to quit.
-#edgedb:main>
+
+```
+
+- output:
+
+```
+ EdgeDB 5.3+cc878d8 (repl 5.1.0+7c5764f)
+Type \help for help, \quit to quit.
+edgedb:main>`
 ```
 
 ### Creer schema
@@ -66,9 +71,16 @@ module default {
 
 - installer le schema `default` avec la commande `edgedb schema install`
 
+- creer un ficher .edgeql dans le dossier `dbschema/migrations`
+
 ```bash
-edgedb migration create # cree un ficher .edgeql dans le dossier `dbschema/migrations`
-edgedb migrate # execute le ficher .edgeql
+edgedb migration create
+```
+
+- executer le ficher .edgeql
+
+```bash
+edgedb migrate
 ```
 
 ### Creer les premiers posts
@@ -93,11 +105,21 @@ insert BlogPost {
 
 ## Deploiment
 
-### install nodejs on linux ubuntu
+### install nodejs & pnpm on linux ubuntu
 
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - &&\
 sudo apt-get install -y nodejs
+npm install -g pnpm
 ```
 
 - [doc github repo nodejs](https://github.com/nodesource/distributions/blob/master/README.md#debian-and-ubuntu-based-distributions)
+
+### install projet
+
+```bash
+git clone <project url>
+cd <project name>
+curl --proto '=https' --tlsv1.2 -sSf https://sh.edgedb.com | sh
+pnpm install
+```
