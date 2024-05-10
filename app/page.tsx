@@ -1,24 +1,15 @@
+import createClient from "edgedb";
 import Link from "next/link";
-
-type Post = {
-  id: string;
-  title: string;
-  content: string;
-};
+import e from "@/dbschema/edgeql-js";
 
 export default async function Home() {
-  const posts: Post[] = [
-    {
-      id: "post1",
-      title: "This one weird trick makes using databases fun",
-      content: "Use EdgeDB",
-    },
-    {
-      id: "post2",
-      title: "How to build a blog with EdgeDB and Next.js",
-      content: "Let's start by scaffolding our app with `create-next-app`.",
-    },
-  ];
+  const client = createClient();
+  const selectPosts = e.select(e.BlogPost, () => ({
+    id: true,
+    title: true,
+    content: true,
+  }));
+  const posts = await selectPosts.run(client);
 
   return (
     <div className="container mx-auto p-4 bg-black text-white">
