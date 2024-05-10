@@ -1,6 +1,7 @@
 import createClient from "edgedb";
 import Link from "next/link";
 import e from "@/dbschema/edgeql-js";
+import { ProfileForm } from "@/components/FormSubmit";
 
 export default async function Home() {
   const client = createClient();
@@ -13,6 +14,7 @@ export default async function Home() {
 
   return (
     <div className="container mx-auto p-4 bg-black text-white">
+      <ProfileForm />
       <h1 className="text-3xl font-bold mb-4">Posts</h1>
       <ul>
         {posts.map((post) => (

@@ -1,4 +1,4 @@
-# Petit tutoriel d'edgedb avec NextJs
+# Petit tutoriel d'edgedb avec NextJs **\***PROOF OF CONCEPT\*\*\* working tree
 
 ## Demarrage
 
@@ -85,20 +85,20 @@ edgedb migrate
 
 ### Creer les premiers posts
 
-```bash
+```JavaScript
 insert BlogPost {
-............ title := "This one weird trick makes database fun",
-............ content := "use edge db"
-............ };
+  title := "This one weird trick makes using databases fun",
+  content := "Use EdgeDB"
+};
 ```
 
 #output:{default::BlogPost {id: 693790d0-0ec7-11ef-b0f6-dfe4f6fbecb2}}
 
-```bash
+```JavaScript
 insert BlogPost {
-............ title := "This one weird trick makes database fun",
-............ content := "use edge db"
-............ };
+  title := "How to build a blog with EdgeDB and Next.js",
+  content := "Let's start by scaffolding our app..."
+};
 ```
 
 #output:{default::BlogPost {id: 8bd85e26-0ec7-11ef-b0f6-a3ed574589dc}}
