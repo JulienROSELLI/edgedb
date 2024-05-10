@@ -26,33 +26,21 @@ pnpm  dev
 
 La DataBase s'install dans le projet NextJs a voir apres si on a d'atre moyen de faire ou si ca va comme ca
 
+- Linux
+
 ```bash
-#Linux
-#creer un nouveau dossier car il install dans le dossier courant
 curl --proto '=https' --tlsv1.2 -sSf https://sh.edgedb.com | sh
 ```
 
+- Windows
+
 ```Powershell
-#Windows
 iwr https://ps1.edgedb.com -useb | iex
 ```
 
 ```bash
 edgedb --version # 5.3+cc878d8 si output "Command not found" -> redemarrer bash
 edgedb project init
-
-    output:
-#┌─────────────────────┬──────────────────────────┐
-#│ Project directory   │ /home/julien             │
-#│ Project config      │ /home/julien/edgedb.toml │
-#│ Schema dir (empty)  │ /home/julien/dbschema    │
-#│ Installation method │ portable package         │
-#│ Version             │ 5.3+cc878d8              │
-#│ Instance name       │ edgedb                   │
-#│ Branch              │ main                     │
-#└─────────────────────┴──────────────────────────┘
-
-
 edgedb
 
 # output
@@ -85,16 +73,31 @@ edgedb migrate # execute le ficher .edgeql
 
 ### Creer les premiers posts
 
-```CLI edgedb
-edgedb:main> insert BlogPost {
+```bash
+insert BlogPost {
 ............ title := "This one weird trick makes database fun",
 ............ content := "use edge db"
 ............ };
-{default::BlogPost {id: 693790d0-0ec7-11ef-b0f6-dfe4f6fbecb2}}
-edgedb:main> insert BlogPost {
-............ title := "This one weird trick makes database fun",
-............ content := "use edge db"
-............ };
-{default::BlogPost {id: 8bd85e26-0ec7-11ef-b0f6-a3ed574589dc}}
-edgedb:main>
 ```
+
+#output:{default::BlogPost {id: 693790d0-0ec7-11ef-b0f6-dfe4f6fbecb2}}
+
+```bash
+insert BlogPost {
+............ title := "This one weird trick makes database fun",
+............ content := "use edge db"
+............ };
+```
+
+#output:{default::BlogPost {id: 8bd85e26-0ec7-11ef-b0f6-a3ed574589dc}}
+
+## Deploiment
+
+### install nodejs on linux ubuntu
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
+```
+
+- [doc github repo nodejs](https://github.com/nodesource/distributions/blob/master/README.md#debian-and-ubuntu-based-distributions)
